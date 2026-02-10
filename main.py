@@ -43,7 +43,7 @@ def get_arc_raiders_events_from_api_schedule():
         data = response.json()
         raw_events = data.get('data', [])
 
-        if raw_events, and 'startTime' in raw_events[0] and 'endTime' in raw_events[0]:
+        if raw_events and 'startTime' in raw_events[0] and 'endTime' in raw_events[0]:
             return _get_events_exact(raw_events)
         elif raw_events and 'times' in raw_events[0]:
             return _get_events_schedule(raw_events)
@@ -133,3 +133,4 @@ async def api_user_events():
     except Exception as e:
         logger.error(f"Ошибка: {e}")
         return {"error": "Internal Server Error"}, 500
+
